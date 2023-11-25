@@ -16,7 +16,6 @@ public class ListaEncadeada<T> {
         No<T> no = new No<T>(elemento);
 
         if (this.tamanho == 0) {
-            // this.inicio = no;
             this.ultimo = no;
         } else {
             no.setProximo(this.inicio);
@@ -34,7 +33,29 @@ public class ListaEncadeada<T> {
             this.ultimo.setProximo(no);
         }
         this.ultimo = no;
-        this.tamanho = 0;
+        this.tamanho++;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    public T Exibir() {
+        if (this.tamanho == 0) {
+            return (T) ("[Vazia!!]");
+        }
+
+        StringBuilder sb = new StringBuilder();
+        No<T> atual = this.inicio;
+
+        sb.append("[");
+        for (int i = 0; i < this.tamanho - 1; i++) {
+            sb.append(atual.getValor()).append(", ");
+            atual = atual.getProximo();
+        }
+        sb.append(atual.getValor()).append("]");
+
+        return (T) sb.toString();
     }
 
 }
