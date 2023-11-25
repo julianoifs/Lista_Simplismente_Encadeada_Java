@@ -40,6 +40,19 @@ public class ListaEncadeada<T> {
         return tamanho;
     }
 
+    public void limpar() {
+        for (No<T> atual = this.inicio; atual != null; ) {
+            No<T> novoProximo = atual.getProximo();
+            atual.setValor(null);
+            atual.setProximo(null);
+            atual = novoProximo;
+        }
+
+        this.inicio = null;
+        this.ultimo = null;
+        this.tamanho = 0;
+    }
+
     public T Exibir() {
         if (this.tamanho == 0) {
             return (T) ("[Vazia!!]");

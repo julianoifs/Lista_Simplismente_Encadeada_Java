@@ -15,5 +15,10 @@ public class Main {
         System.out.println("Tamanho: " + lista.getTamanho());
         System.out.println(lista.Exibir());
 
+        System.out.println("\nLimpando toda a lista");
+        lista.limpar();
+        System.out.println("\nTamanho: " + lista.getTamanho());
+        System.out.println(lista.Exibir());
+
     }
 }
