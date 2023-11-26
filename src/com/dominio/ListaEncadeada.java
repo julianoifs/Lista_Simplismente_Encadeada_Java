@@ -40,20 +40,52 @@ public class ListaEncadeada<T> {
         return tamanho;
     }
 
-    public void limpar() {
-        for (No<T> atual = this.inicio; atual != null; ) {
+    public void removerInicio() {
+        No<T> atual = this.inicio;
+
+        if (this.tamanho == 1) {
+            this.inicio = null;
+            this.ultimo = null;
+        } else {
+            this.inicio = this.inicio.getProximo();
+            atual.setProximo(null);
+            this.tamanho--;
+        }
+    }
+
+    public void removerFinal() {
+        No<T> anterior = null;
+        No<T> atual = this.inicio;
+
+        if (this.tamanho == 1) {
+            this.inicio = null;
+            this.ultimo = null;
+        } else {
+            for (int i = 0; i < this.getTamanho(); i++) {
+                if (atual.getValor().equals(this.ultimo.getValor())) {
+                    this.ultimo = anterior;
+                    anterior.setProximo(null);
+                }
+                anterior = atual;
+                atual = atual.getProximo();
+            }
+        }
+        this.tamanho--;
+    }
+
+    public void limpaLista() {
+        for (No<T> atual = this.inicio; atual != null;) {
             No<T> novoProximo = atual.getProximo();
             atual.setValor(null);
             atual.setProximo(null);
             atual = novoProximo;
         }
-
         this.inicio = null;
         this.ultimo = null;
         this.tamanho = 0;
     }
 
-    public T Exibir() {
+    public T exibir() {
         if (this.tamanho == 0) {
             return (T) ("[Vazia!!]");
         }

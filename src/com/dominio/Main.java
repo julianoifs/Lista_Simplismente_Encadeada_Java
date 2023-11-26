@@ -13,12 +13,24 @@ public class Main {
         lista.addFinal(6);
 
         System.out.println("Tamanho: " + lista.getTamanho());
-        System.out.println(lista.Exibir());
+        System.out.println(lista.exibir());
 
-        System.out.println("\nLimpando toda a lista");
-        lista.limpar();
+        lista.removerInicio();
+        lista.removerInicio();
+       
+        System.out.println("Tamanho: " + lista.getTamanho());
+        System.out.println(lista.exibir());
+
+        lista.removerFinal();
+        lista.removerFinal();
+
+        System.out.println("Tamanho: " + lista.getTamanho());
+        System.out.println(lista.exibir());
+        
+        /*System.out.println("\nLimpando toda a lista");
+        lista.limpaLista();
         System.out.println("\nTamanho: " + lista.getTamanho());
-        System.out.println(lista.Exibir());
+        System.out.println(lista.exibir());*/
 
     }
 }
