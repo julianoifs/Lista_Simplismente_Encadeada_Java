@@ -85,6 +85,17 @@ public class ListaEncadeada<T> {
         this.tamanho = 0;
     }
 
+    public T getElemento(int posicao) {
+        No<T> atual = this.inicio;
+
+        for (int i = 0; i < posicao; i++) {
+            if (atual.getProximo() != null) {
+                atual = atual.getProximo();
+            }
+        }
+        return atual.getValor();
+    }
+
     public T exibir() {
         if (this.tamanho == 0) {
             return (T) ("[Vazia!!]");

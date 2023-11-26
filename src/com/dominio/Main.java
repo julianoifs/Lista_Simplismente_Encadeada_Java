@@ -26,6 +26,8 @@ public class Main {
 
         System.out.println("Tamanho: " + lista.getTamanho());
         System.out.println(lista.exibir());
+
+        System.out.println(lista.getElemento(0));
         
         /*System.out.println("\nLimpando toda a lista");
         lista.limpaLista();
