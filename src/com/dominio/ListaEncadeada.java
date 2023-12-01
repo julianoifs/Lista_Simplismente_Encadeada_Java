@@ -40,6 +40,13 @@ public class ListaEncadeada<T> {
         return tamanho;
     }
 
+    public boolean contem() {
+        if (this.tamanho == 0) {
+            return false;
+        }
+        return true;
+    }
+
     public void removerInicio() {
         No<T> atual = this.inicio;
 
