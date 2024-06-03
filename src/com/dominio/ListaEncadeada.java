@@ -12,6 +12,7 @@ public class ListaEncadeada<T> {
         this.tamanho = 0;
     }
 
+    // adiciona no início
     public void addInicio(T elemento) {
         No<T> no = new No<T>(elemento);
 
@@ -24,6 +25,26 @@ public class ListaEncadeada<T> {
         this.tamanho++;
     }
 
+    // adiciona no meio
+    public void addMeio(int posicao, T elemento) {
+        No<T> no = new No<T>(elemento);
+        No<T> atual = this.inicio;
+
+        if (posicao <= 0) {
+            this.addInicio(elemento);
+        } else if (posicao >= this.tamanho) {
+            this.addFinal(elemento);
+        } else {
+            for (int i = 0; i < posicao - 1; i++) {
+                atual = atual.getProximo();
+            }
+            no.setProximo(atual.getProximo());
+            atual.setProximo(no);
+            this.tamanho++;
+        }
+    }
+
+    // adiciona no final
     public void addFinal(T elemento) {
         No<T> no = new No<T>(elemento);
 
@@ -36,10 +57,12 @@ public class ListaEncadeada<T> {
         this.tamanho++;
     }
 
+    // retorna o tamanho/quantidade de elemento
     public int getTamanho() {
         return tamanho;
     }
 
+    // retorna true se a lista possui elemento
     public boolean contem() {
         if (this.tamanho == 0) {
             return false;
@@ -47,6 +70,7 @@ public class ListaEncadeada<T> {
         return true;
     }
 
+    // remove do início
     public void removerInicio() {
         No<T> atual = this.inicio;
 
@@ -60,6 +84,33 @@ public class ListaEncadeada<T> {
         }
     }
 
+    // remove do meio
+    public void removeMeio(T elemento) {
+        No<T> anterior = null;
+        No<T> atual = this.inicio;
+
+        for (int i = 0; i < this.tamanho; i++) {
+            if (atual.getValor().equals(elemento)) {
+                if (this.tamanho == 1) {
+                    this.inicio = null;
+                    this.ultimo = null;
+                } else if (elemento.equals(this.inicio.getValor())) {
+                    throw new IllegalArgumentException("Elemento não pode ser removido!");
+                } else if (elemento.equals(this.ultimo.getValor())) {
+                    throw new IllegalArgumentException("Elemento não pode ser removido!");
+                } else {
+                    anterior.setProximo(atual.getProximo());
+                    atual = null;
+                }
+                break;
+            }
+            anterior = atual;
+            atual = atual.getProximo();
+        }
+        this.tamanho--;
+    }
+
+    // remove do final
     public void removerFinal() {
         No<T> anterior = null;
         No<T> atual = this.inicio;
@@ -80,6 +131,7 @@ public class ListaEncadeada<T> {
         this.tamanho--;
     }
 
+    // limpa toda a lista
     public void limpaLista() {
         for (No<T> atual = this.inicio; atual != null;) {
             No<T> novoProximo = atual.getProximo();
@@ -92,6 +144,7 @@ public class ListaEncadeada<T> {
         this.tamanho = 0;
     }
 
+    // retorna um elemento de acordo com a posição passada
     public T getElemento(int posicao) {
         No<T> atual = this.inicio;
 
@@ -103,6 +156,7 @@ public class ListaEncadeada<T> {
         return atual.getValor();
     }
 
+    // exixbir os elemento da lista
     public T exibir() {
         if (this.tamanho == 0) {
             return (T) ("[Vazia!!]");
