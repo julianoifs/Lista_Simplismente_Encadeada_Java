@@ -65,9 +65,9 @@ public class ListaEncadeada<T> {
     // retorna true se a lista possui elemento
     public boolean contem() {
         if (this.tamanho == 0) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     // remove do início
